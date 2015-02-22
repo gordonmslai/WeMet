@@ -1,0 +1,16 @@
+#!/bin/bash
+# add a mask so that email communication is hidden behind the given anon identity
+# ANON_ADDR is just the username, not the entire email
+# so ANON_ADDR should NOT be anon@wemet-demo.me
+REAL_ADDR=$1
+ANON_ADDR="$2@wemet-demo.me"
+
+# forward to the right email
+echo $ANON_ADDR $REAL_ADDR >> /etc/postfix/virtual
+
+# mask real email addresses when forwarding
+echo $REAL_ADDR $ANON_ADDR >> /etc/postfix/map
+echo "/^From:(.*)$REAL_ADDR.*/ REPLACE From: \"\${1}\" <$ANON_ADDR>" >> /etc/postfix/header_checks
+
+sudo postmap /etc/postfix/virtual
+sudo service postfix restart
