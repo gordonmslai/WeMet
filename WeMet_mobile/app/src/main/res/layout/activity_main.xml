@@ -1,0 +1,169 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="#222">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:focusableInTouchMode="false">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="265dp"
+            android:layout_height="fill_parent"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="5dp"
+            android:background="#ffffff">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="My WeMets"
+                    android:id="@+id/textView"
+                    android:textIsSelectable="false"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="clip_vertical">
+
+                <Spinner
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/spinner"
+                    android:spinnerMode="dropdown"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:padding="5dp"
+            android:background="#d2cb5a"
+            android:clickable="true"
+            android:id="@+id/notif_btn">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView"
+                android:layout_centerInParent="true"
+                android:src="@drawable/notif"
+                android:visibility="invisible" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 new notifications"
+                android:id="@+id/notif_text"
+                android:layout_alignParentTop="false"
+                android:layout_alignParentEnd="false"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:gravity="center_vertical|center_horizontal"
+                android:textColor="#111"
+                android:textStyle="italic"
+                android:textSize="12dp"
+                android:textIsSelectable="false" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/listView"
+        android:layout_below="@+id/header" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/screen"
+        android:visibility="invisible">
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/header"
+            android:id="@+id/bgscreen"
+            android:background="#111"
+            android:clickable="false"
+            android:alpha="0.75"
+            android:visibility="visible">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/inspect_bg"
+            android:layout_above="@+id/inspect_name"
+            android:layout_marginTop="100dp">
+
+            <ImageView
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:id="@+id/inspect_img"
+                android:focusableInTouchMode="false"
+                android:visibility="visible"
+                android:scaleType="centerCrop"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/inspect_bg">
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Block"
+                android:id="@+id/button2"
+                android:layout_alignTop="@+id/button"
+                android:layout_alignParentEnd="false"
+                android:layout_toRightOf="@+id/button" />
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="Message"
+                android:id="@+id/button"
+                android:layout_marginTop="70dp"
+                android:layout_alignParentStart="true" />
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/inspect_name"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="180dp"
+            android:textSize="30dp"
+            android:textColor="#ffffff" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

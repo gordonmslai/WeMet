@@ -6,7 +6,9 @@ from models import Profile
 
 urls = (
     '/create_profile/', 'create_profile',
-    '/profiles/(.*)', 'get_profile'
+    '/profiles/(.*)', 'get_profile',
+    '/all_profiles/', 'all_profiles'
+
 )
 
 app = web.application(urls, globals())
@@ -20,6 +22,10 @@ class create_profile:
 class get_profile:
     def GET(self, user):
         return json.dumps(database.get_profile(user).to_json())
+
+class all_profiles: #returns readable string of all profiles in database
+    def GET(self):
+        return json.dumps(database.all_profiles(), indent = 2)
 
 if __name__ == "__main__":
     web.httpserver.runsimple(app.wsgifunc(), ("0.0.0.0", 80))

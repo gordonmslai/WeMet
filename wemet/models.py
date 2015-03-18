@@ -105,7 +105,7 @@ class Profile(object):
         image = json['image']
         username = json['username']
         real_email = json['real_email']
-        matches = map(Profile.from_json, json['matches'])
+        matches = json['matches']
         return Profile(firstname, lastname, image, username, matches, real_email)
 
     def to_xmpp(self, to):
@@ -128,7 +128,7 @@ class Profile(object):
                 'image': self.image,
                 'username': self.username,
                 'real_email': self.real_email,
-                'matches': map(lambda x: x if type(x) == unicode else x.username, self.matches)}
+                'matches': self.matches}
 
     def to_json(self):
         return {'firstname': self.firstname,
@@ -136,9 +136,10 @@ class Profile(object):
                 'image': self.image,
                 'username': self.username,
                 'real_email': self.real_email,
-                'matches': map(lambda x: x.to_json_dont_expand_matches(), self.matches) }
+                'matches': self.matches }
 
     def add_match(self, other):
         print("Adding match between " + self.username + " and " + other.username)
-        self.matches.append(other)
+        self.matches.append(other.username)
+        other.matches.append(self.username)
         database.set_profile(self.username, self)
